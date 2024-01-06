@@ -6,7 +6,7 @@
     "test": "cd ./tests && npx jest --forceExit --detectOpenHandles",
     "tsc": "tsc",
     "ts-node": "ts-node",
-    "start": "npx ts-node index.ts"
+    "start": "DEBUG=express:* npx ts-node index.ts"
   },
   "author": "",
   "license": "ISC",
