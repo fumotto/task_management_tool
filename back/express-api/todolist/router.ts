@@ -9,7 +9,7 @@ import UserAccount from "../db/models/user_account";
 import TodoLogic from "./logic"
 
 const router = express.Router()
-const logic = new TodoLogic()
+const logic = TodoLogic
 
 router.get('/api/tasks/Todo/', [login_required ,logic.getTodoes])
 

@@ -1,11 +1,11 @@
 // モジュールのインポート
 import express from "express";
 import passport from "passport";
-import {LoginLogic} from './logic'
+import LoginLogic from './logic'
 
 // アプリケーションの作成
 const router: express.Router = express.Router();
-const logic = new LoginLogic()
+const logic = LoginLogic
 
 //ログインチェックの実装
 logic.setLoginStrategy();

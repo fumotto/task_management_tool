@@ -82,3 +82,5 @@ app.listen(9000,()=>{ console.log('"backend-api" is listening on port 9000!') })
 function genuuid() {
   return randomUUID()
 }
+
+export default app

@@ -4,7 +4,7 @@ import { Request, Response } from "express";
 import Log from "../descripter/logger";
 import Task from "../db/models/tasks";
 
-export default class TodoLogic{
+class TodoLogic{
 
     @Log()
     public async getTodoes(req: Request, res: Response) {
@@ -53,3 +53,4 @@ export default class TodoLogic{
     }
 }
 
+export default new TodoLogic()

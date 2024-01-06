@@ -9,7 +9,7 @@ import { Strategy as LocalStrategy } from "passport-local";
 import Log from "../descripter/logger";
 
 
-export class LoginLogic {
+class LoginLogic {
     /** ユーザー登録のルート */
     @Log()
     public async signup(req: Request, res: Response) {
@@ -136,3 +136,5 @@ export class LoginLogic {
         });
     }
 }
+
+export default new LoginLogic()

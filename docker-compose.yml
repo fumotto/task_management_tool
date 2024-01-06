@@ -28,7 +28,9 @@ services:
       - postgres
       - redis
     volumes:
-      - ./back/express-api:/back/express-api
+      - type: bind
+        source : ./back/express-api
+        target: /back/express-api
     ports:
       - "9000:9000"
     command: sh -c "cd /back/express-api && npm run start"
