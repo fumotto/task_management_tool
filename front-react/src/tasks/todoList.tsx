@@ -2,10 +2,10 @@ import React, { useState , useEffect } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import AddToDoListModal from './addTodoModal'
 
-const initialItems = [
-  { id: '1', title: 'Sample Task 1'  , priority: 1 },
-  { id: '2', title: 'サンプルタスク 2', priority: 2 },
-  { id: '3', title: 'さんぷるたすく 3', priority: 3 },
+const initialItems :any[] = [
+  // { id: '1', title: 'Sample Task 1'  , priority: 1 },
+  // { id: '2', title: 'サンプルタスク 2', priority: 2 },
+  // { id: '3', title: 'さんぷるたすく 3', priority: 3 },
 ];
 
 function TodoList() {
@@ -15,7 +15,7 @@ function TodoList() {
   const getTasks = async () => {
       const result = await fetch('/api/tasks/Todo' , { credentials : 'include'})
       
-      if (!result.ok){
+      if (!result.ok && result.status !== 401){
           alert('TODOリストの取得に失敗しました');
           return;
       }
@@ -62,25 +62,30 @@ function TodoList() {
 
   return (
     <div>
+      <h1>TODOリスト</h1>
       {/* ADD BUTTON AND MODAL */}
-      <button onClick={() => setShowAddModal(true)}>追加</button>
+      <p>
+        <button onClick={() => setShowAddModal(true)}>追加</button>
+      </p>
+
+
       <AddToDoListModal show={showAddModal} setShow={setShowAddModal} />
 
-      {/*  */}
-      <button onClick={() => handleSavePriority()}>この順番で保存</button>
-
       {/* TODOLIST AREA */}
+      {!items? <div>タスクがまだありません……</div> : <div></div>
+      
+      }
       <DragDropContext onDragEnd={handleDragEnd}>
         <Droppable droppableId="droppable">
           {(provided) => (
             <div {...provided.droppableProps} ref={provided.innerRef}>
-              {items.map((item, index) => (
+              {items?.map((item, index) => (
                 <Draggable key={item.id} draggableId={"" + item.id} index={index}>
                   {(provided) => (
                     <div
-                      {...provided.draggableProps}
-                      {...provided.dragHandleProps}
-                      ref={provided.innerRef}
+                    {...provided.draggableProps}
+                    {...provided.dragHandleProps}
+                    ref={provided.innerRef}
                     >
                       {item.title}
                     </div>
@@ -92,6 +97,8 @@ function TodoList() {
           )}
         </Droppable>
       </DragDropContext>
+      {/*  */}
+      <button className="width-full" onClick={() => handleSavePriority()}>この順番で保存</button>
     </div>
   );
 }

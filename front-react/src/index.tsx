@@ -14,7 +14,7 @@ root.render(
     <Login />
     <hr />
     <TodoList/>
-    <App />
+    {/* <App /> */}
   </React.StrictMode>
 );
 

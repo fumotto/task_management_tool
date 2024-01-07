@@ -120,8 +120,10 @@ function Login() {
                         パスワード:
                         <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
                     </label>
-                    <input type="submit" value="アカウント作成"  onClick={handleSignin} disabled={disabled}/>
-                    <input type="submit" value="ログイン" onClick={handleLogin}  disabled={disabled} />
+                    <p>
+                        <input type="submit" value="アカウント作成"  onClick={handleSignin} disabled={disabled}/>
+                        <input type="submit" value="ログイン" onClick={handleLogin}  disabled={disabled} />
+                    </p>
                 </form>
             </div>
         );
