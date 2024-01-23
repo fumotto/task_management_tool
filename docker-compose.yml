@@ -7,7 +7,7 @@ services:
     ports:
       - "8080:8080"
     depends_on:
-      - front-react
+      # - front-react
       - backend-api
     volumes:
       - type: bind
@@ -16,6 +16,9 @@ services:
       - type: bind
         source: ./front-react
         target: /usr/src/app
+      - type: bind
+        source: ./front
+        target: /usr/src/front
       - ./nginx/entrypoint.sh:/docker-entrypoint.d/entrypoint.sh
 
   backend-api:
@@ -36,19 +39,19 @@ services:
     command: sh -c "cd /back/express-api && npm run start"
 
       
-  front-react:
-    restart: always
-    container_name: react_app
-    volumes:
-      - type: bind
-        source: ./front-react
-        target: /usr/src/app
-    build: 
-      context : ./front-react
-      dockerfile: Dockerfile
-    command: sh -c "npm start"
-    ports:
-      - "3000:3000"
+  # front-react:
+  #   restart: always
+  #   container_name: react_app
+  #   volumes:
+  #     - type: bind
+  #       source: ./front-react
+  #       target: /usr/src/app
+  #   build: 
+  #     context : ./front-react
+  #     dockerfile: Dockerfile
+  #   command: sh -c "npm start"
+  #   ports:
+  #     - "3000:3000"
 
   postgres:
     image: postgres

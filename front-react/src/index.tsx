@@ -6,7 +6,7 @@ import ErrorPage from './errorPage';
 import Login from './login/loginview'
 import reportWebVitals from './reportWebVitals';
 import TodoList from './tasks/todo/todoList';
-import Detal from './tasks/detail';
+import Detail from './tasks/detail';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(
@@ -29,7 +29,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'detail',
-        element: <Detal />,
+        element: <Detail />,
       },
     ],
   },

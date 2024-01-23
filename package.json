@@ -11,9 +11,10 @@
   },
   "scripts": {
     "start": "docker compose up -d",
-    "build": "cd ./front-react && npm run build"
+    "build": "cd ./front/gatsby && npm run build"
   },
   "dependencies": {
+    "gatsby": "^5.13.1",
     "oas3-tools": "^2.2.3",
     "supertest": "^6.3.3",
     "swagger-typescript-api": "^13.0.3"

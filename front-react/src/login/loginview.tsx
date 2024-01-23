@@ -103,13 +103,13 @@ function Login() {
         return (<div></div>)
     }else if (islogined) {
         return (
-            <div>
+            <template>
                 <input type="submit" value="ログアウト"  onClick={handleLogout} disabled={disabled}/>
-            </div>
+            </template>
         );
     }else {
         return (
-            <div>
+            <template>
                 <h2>アカウント作成・ログイン</h2>
                 <form>
                     <label>
@@ -125,7 +125,7 @@ function Login() {
                         <input type="submit" value="ログイン" onClick={handleLogin}  disabled={disabled} />
                     </p>
                 </form>
-            </div>
+            </template>
         );
     }
 }
