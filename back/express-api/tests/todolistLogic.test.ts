@@ -1,7 +1,7 @@
 import { createClient } from "redis";
-import app from "../index"
+import app from "../src/index"
 import request from "supertest";
-import TodoLogic from "../todolist/logic";
+import TodoLogic from "../src/todolist/logic";
 
 describe("Test the todo", async () => {
     test("", async () => {
