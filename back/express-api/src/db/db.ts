@@ -2,11 +2,12 @@ import {Sequelize} from 'sequelize-typescript';
 import UserAccount from "./models/user_account";
 import Task from './models/tasks';
 import Log from '../descripter/logger';
+require('dotenv').config();
 /**
  * 接続設定
  */
 const config = {
-    HOST: "postgres",
+    HOST: process.env.DB_HOST || "postgres",
     USER: "postgres",
     PASSWORD: "postgres",
     DB: "postgres",

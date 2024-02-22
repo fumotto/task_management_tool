@@ -13,7 +13,7 @@ class LoginLogic {
     /** ユーザー登録のルート */
     @Log()
     public async signup(req: Request, res: Response) {
-        const request = structuredClone(req.query);
+        // const request = structuredClone(req.query);
         try {
             // リクエストからユーザー名とパスワードを取得
             const { username, password } = req.body;

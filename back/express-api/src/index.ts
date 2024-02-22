@@ -9,6 +9,9 @@ import todoRouter from './todolist/router'
 import db from "./db/db"
 import passport from 'passport'
 
+require('dotenv').config();
+console.log(JSON.stringify(process.env))
+
 const app: express.Express = express()
 
 new db().createTables()
@@ -21,7 +24,8 @@ new db().createTables()
 // })
 
 // sessionの使用
-let redisClient = createClient({ url: 'redis://redis:6379' })
+
+let redisClient = createClient({ url: process.env.REDIS_URL || 'redis://redis:6379' })
 redisClient.connect().catch(console.error)
 let redisStore  =  new RedisStore({
   client:redisClient,
@@ -37,7 +41,7 @@ const sess = {
   },
   store:redisStore
 }
-if (app.get('env') === 'production') {
+if (process.env.ENV === 'production') {
   app.set('trust proxy', 1) // trust first proxy
   sess.cookie.httpOnly = true // XSS攻撃を防ぐ
   sess.cookie.secure = true // serve secure cookies
@@ -61,7 +65,7 @@ app.use(loginRouter)
 app.use(todoRouter)
 
 
-if (app.get('env') !== 'production') {
+if (process.env.ENV !== 'production') {
   // for debug!
   router.get('/api/urlmap', function (req, res) {
     res.json({
@@ -76,7 +80,7 @@ if (app.get('env') !== 'production') {
 }
 
 // 9000番ポートでAPIサーバ起動
-app.listen(9000,()=>{ console.log('"backend-api" is listening on port 9000!') })
+app.listen(process.env.PORT || 9000,()=>{ console.log('"backend-api" is listening on port 9000!') })
 
 
 function genuuid() {
