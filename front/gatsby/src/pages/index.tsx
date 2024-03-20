@@ -5,7 +5,12 @@ import { Link } from 'gatsby'
 const IndexPage = () => {
   return (
     <Layout pageTitle="Home Page">
-      <Link to="/about/">about</Link>
+      <p>
+        <Link to="/about/">about</Link>
+      </p>
+      <p>
+        <Link to="/gotodo/">go todo</Link>
+      </p>
       <p>I'm making this by following the Gatsby Tutorial.</p>
     </Layout>
   )
